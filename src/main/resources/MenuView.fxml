@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -13,7 +14,7 @@
               <menus>
                 <Menu mnemonicParsing="false" text="Edit Company">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
+                    <MenuItem fx:id="edit" mnemonicParsing="false" onAction="#editOnAction" text="Edit" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">
@@ -21,17 +22,29 @@
                     <MenuItem mnemonicParsing="false" text="Delete" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Help">
+                <Menu mnemonicParsing="false" text="User">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
+                    <MenuItem fx:id="logout" mnemonicParsing="false" onAction="#logoutOnAction" text="Logout" />
                   </items>
                 </Menu>
+                  <Menu mnemonicParsing="false" text="Products">
+                    <items>
+                      <MenuItem fx:id="addProduct" mnemonicParsing="false" onAction="#addProductOnAction" text="AddProduct" />
+                    </items>
+                  </Menu>
               </menus>
             </MenuBar>
          </top>
          <center>
-            <StackPane fx:id="contentPane" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <StackPane fx:id="contentPane" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </StackPane>
          </center>
       </BorderPane>
    </children>
+   <padding>
+      <Insets bottom="10.0" />
+   </padding>
 </StackPane>

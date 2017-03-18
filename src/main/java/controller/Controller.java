@@ -12,6 +12,8 @@ public class Controller {
 
     protected MainController mainController;
 
+    protected MenuController menuController;
+
     protected void showErrorAlert(String message) {
         showAlert(Alert.AlertType.ERROR, message);
     }

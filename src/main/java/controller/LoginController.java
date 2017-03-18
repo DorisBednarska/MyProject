@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
+import model.User;
+import service.UserService;
 
 import java.io.IOException;
 
@@ -34,9 +36,16 @@ public class LoginController extends Controller {
     void submitOnAction(ActionEvent event) {
         System.out.println(loginTextField.getText());
         System.out.println(passwordField.getText());
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Hello");
-        alert.show();
-        getMainController().loadView("MenuView");
+//        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Hello");
+//        alert.show();
+        UserService userService = new UserService();
+        User user = new User(loginTextField.getText(), passwordField.getText());
+        boolean isAutenticated = userService.authenticate(user);
+        if (isAutenticated){
+            getMainController().loadView("MenuView");
+        }else {
+            showErrorAlert("Nieprawidłowe hasło");
+        }
 //        getMainController().getMainStackPane().getChildren().add(new Label("Test zadziałania"));
         /**
          * 1. Powołujemy do życia UserService

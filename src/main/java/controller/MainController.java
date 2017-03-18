@@ -17,13 +17,14 @@ public class MainController {
     private Stage stage;
     private FXMLLoader loader;
 
-    public void loadView(String viewName) {
+    public void loadView(String viewName, StackPane mainStackPane){
         loader = new FXMLLoader(this.getClass().getResource("/" + viewName + ".fxml"));
 
         try {
             StackPane pane = loader.load();
             Controller controller = loader.getController();
             controller.setMainController(this);
+            mainStackPane.getChildren().clear();
             mainStackPane.getChildren().add(pane);
 //            loader.setController(loginController);
 //            Scene scene = new Scene(mainStackPane);
@@ -31,6 +32,10 @@ public class MainController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void loadView(String viewName) {
+        loadView(viewName, mainStackPane);
     }
 
     @FXML
