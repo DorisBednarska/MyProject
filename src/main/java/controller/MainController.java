@@ -17,21 +17,25 @@ public class MainController {
     private Stage stage;
     private FXMLLoader loader;
 
-    @FXML
-    public void initialize() {
-        loader = new FXMLLoader(this.getClass().getResource("/LoginView.fxml"));
+    public void loadView(String viewName) {
+        loader = new FXMLLoader(this.getClass().getResource("/" + viewName + ".fxml"));
 
         try {
-            StackPane loginPane = loader.load();
-            LoginController loginController = loader.getController();
-            loginController.setMainController(this);
-            mainStackPane.getChildren().add(loginPane);
+            StackPane pane = loader.load();
+            Controller controller = loader.getController();
+            controller.setMainController(this);
+            mainStackPane.getChildren().add(pane);
 //            loader.setController(loginController);
 //            Scene scene = new Scene(mainStackPane);
 //            stage.setScene(scene);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public void initialize() {
+        loadView("LoginView");
     }
 
 
